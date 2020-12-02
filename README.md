@@ -1,21 +1,9 @@
-# Aoc2020
+# Advent of Code 2020 Solutions
 
-**TODO: Add description**
+How to use: 
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `aoc_2020` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:aoc_2020, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/aoc_2020](https://hexdocs.pm/aoc_2020).
+1. Copy your input files into the `files` folder, using the day as the name (e.g.: `files/1` would be the location of your Day 1 input)
+2. Run `iex -S mix` in the root folder.
+3. To run the solutions for a given day, use the following syntax: 
+`Aoc2020.Day.solve(Aoc2020.DayX)` where `X` is the day you'd like to solve.
 
