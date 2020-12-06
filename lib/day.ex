@@ -6,12 +6,12 @@ defmodule Aoc2020.Day do
   @doc """
   Returns the solution for part A of the problem.
   """
-  @callback a(term) :: String.t
+  @callback a(term) :: String.t()
 
   @doc """
   Returns the solution for part B of the problem.
   """
-  @callback b(term) :: String.t
+  @callback b(term) :: String.t()
   @doc """
   Returns the day number.
   """
@@ -44,5 +44,4 @@ defmodule Aoc2020.Day do
     IO.puts("The solution to #{module.day}a is: #{module.a(data)}")
     IO.puts("The solution to #{module.day}b is: #{module.b(data)}")
   end
-
 end

@@ -16,10 +16,9 @@ defmodule Aoc2020.Day3 do
 
   @impl Day
   def b(map) do
-    distances =
-      [{1, 1}, {3, 1}, {5, 1}, {7, 1}, {1, 2}]
-      |> Enum.map(&ski(map, &1))
-      |> Enum.reduce(1, &Kernel.*/2)
+    [{1, 1}, {3, 1}, {5, 1}, {7, 1}, {1, 2}]
+    |> Enum.map(&ski(map, &1))
+    |> Enum.reduce(1, &Kernel.*/2)
   end
 
   @impl Day
@@ -41,7 +40,7 @@ defmodule Aoc2020.Day3 do
 
   def ski_row({_, y}, {x, tree_count}, {_, dy}) when rem(y, dy) > 0, do: {x, tree_count}
 
-  def ski_row({row, y}, {x, tree_count}, {dx, dy}) do
+  def ski_row({row, _}, {x, tree_count}, {dx, _}) do
     case Enum.at(row, x) do
       "#" -> {x + dx, tree_count + 1}
       _ -> {x + dx, tree_count}

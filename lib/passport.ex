@@ -6,11 +6,11 @@ defmodule Aoc2020.Passport do
 
   import Ecto.Changeset
 
-  alias __MODULE__ 
+  alias __MODULE__
   alias Ecto.Changeset
 
   @eye_colors ~w(amb blu brn gry grn hzl oth)
-  
+
   embedded_schema do
     field(:byr, :integer)
     field(:cid, :string)
@@ -23,9 +23,10 @@ defmodule Aoc2020.Passport do
   end
 
   def changeset(%Passport{} = passport, attrs, validation_level \\ :basic) do
-    passport = passport
-    |> cast(attrs, [:byr, :cid, :ecl, :eyr, :hcl, :hgt, :iyr, :pid])
-    |> validate_required([:byr, :ecl, :eyr, :hcl, :hgt, :iyr, :pid])
+    passport =
+      passport
+      |> cast(attrs, [:byr, :cid, :ecl, :eyr, :hcl, :hgt, :iyr, :pid])
+      |> validate_required([:byr, :ecl, :eyr, :hcl, :hgt, :iyr, :pid])
 
     if validation_level == :strict do
       passport
@@ -42,8 +43,9 @@ defmodule Aoc2020.Passport do
   end
 
   def validate_height(%Changeset{valid?: false} = changeset), do: changeset
+
   def validate_height(%Changeset{} = changeset) do
-    height = 
+    height =
       changeset
       |> get_field(:hgt, "0cm")
       |> Integer.parse()
@@ -56,5 +58,5 @@ defmodule Aoc2020.Passport do
 
   def is_height_valid?({height, "cm"}), do: Enum.member?(150..193, height)
   def is_height_valid?({height, "in"}), do: Enum.member?(59..76, height)
-  def is_height_valid?(_), do: false 
+  def is_height_valid?(_), do: false
 end

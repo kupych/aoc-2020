@@ -7,7 +7,7 @@ defmodule Aoc2020.Day25 do
   alias Aoc2020.Day
 
   @impl Day
-  def day(), do: 25 
+  def day(), do: 25
 
   @impl Day
   def a(_) do
