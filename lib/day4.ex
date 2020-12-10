@@ -36,7 +36,6 @@ defmodule Aoc2020.Day4 do
     passport_string
     |> String.split(~r/\s/, trim: true)
     |> Enum.map(&String.split(&1, ":"))
-    |> IO.inspect()
     |> Enum.map(fn [k | [v]] -> {String.to_atom(k), v} end)
     |> Map.new()
   end
