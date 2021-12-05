@@ -12,12 +12,10 @@ defmodule Aoc2020.Day13 do
   @impl Day
   def a({timestamp, buses}) do
     buses = Enum.filter(buses, &is_integer/1)
-    IO.inspect(buses)
     
     {time, bus_id} = buses
     |> Enum.map(&nearest_departure(&1, timestamp))
     |> Enum.sort()
-    |> IO.inspect
     |> hd()
 
     bus_id * time
@@ -31,8 +29,8 @@ defmodule Aoc2020.Day13 do
       {"x", _} -> true
       _ -> false
     end)
-    |> IO.inspect
-    |> pingus
+    |> IO.inspect()
+    |> check_window()
   end
 
   @impl Day
@@ -64,22 +62,22 @@ defmodule Aoc2020.Day13 do
     {nearest_time, bus_id}
   end
 
-  def pingus([{bus, 0} | rest]) do
-    pingus(rest, bus, bus)
+  def check_window([{bus, 0} | rest]) do
+    check_window(rest, bus, bus)
   end
 
-  def pingus([], total, _) do
+  def check_window([], total, _) do
     total
   end
 
 
-  def pingus([{bus, offset} = head | rest], total, mult) do
+  def check_window([{bus, offset} = head | rest], total, mult) do
     case Kernel.rem((total + offset), bus) do
       0 -> IO.inspect(total)
-        pingus(rest, total, total)
+        check_window(rest, total, mult * bus)
       _ -> 
         IO.inspect({bus, offset, total}, label: :not_yet)
-        pingus([head | rest], total + mult, mult)
+        check_window([head | rest], total + mult, mult)
     end
   end
 
