@@ -25,4 +25,11 @@ defmodule Aoc2020.Day17 do
       file
     end
   end
+
+end
+
+defmodule Aoc2020.ConwayCube do
+  defstruct cells: %{}
+
+  
 end
